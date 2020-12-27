@@ -109,6 +109,10 @@ public class BanHangController implements Initializable{
     private int currentPrice = 0;
     private float currentDiscount;
 
+    public void setCustomer(Customer customer){
+        this.customer = customer;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -232,4 +236,5 @@ public class BanHangController implements Initializable{
             }
         }
     }
+    
 }
