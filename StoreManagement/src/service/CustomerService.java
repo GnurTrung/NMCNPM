@@ -5,31 +5,39 @@ import java.util.List;
 import src.model.Customer;
 
 public class CustomerService {
-    private CustomerDAO CustomerDAO;
+//    private CustomerDAO CustomerDAO;
+    private static CustomerService instance;
 
-    public CustomerService() {
-        CustomerDAO = new CustomerDAO();
+    public static CustomerService getInstance(){
+        if (instance == null){
+            instance = new CustomerService();
+        }
+        return instance;
     }
+
+//    public CustomerService() {
+//        CustomerDAO = new CustomerDAO();
+//    }
     public List<Customer> getAllCustomers() {
-        return CustomerDAO.getAllCustomers();
+        return CustomerDAO.getInstance().getAllCustomers();
     }
 
     public List<Customer> getCustomersByName(String name){
-        return CustomerDAO.getCustomersByName(name);
+        return CustomerDAO.getInstance().getCustomersByName(name);
     }
     public  void removeCustomer(String IDCustomer){
-        CustomerDAO.removeCustomer(IDCustomer);
+        CustomerDAO.getInstance().removeCustomer(IDCustomer);
     }
     public void updateGoods(Customer g) {
-        CustomerDAO.updateCustomer(g);
+        CustomerDAO.getInstance().updateCustomer(g);
     }
     public Customer getCustomersByID(int ID){
-        return CustomerDAO.getCustomersByID(ID);
+        return CustomerDAO.getInstance().getCustomersByID(ID);
     }
     public Customer getCustomersByPhone(String phone){
-        return CustomerDAO.getCustomersByPhone(phone);
+        return CustomerDAO.getInstance().getCustomersByPhone(phone);
     }
     public  void addCustomer(Customer g){
-        CustomerDAO.addCustomer(g);
+        CustomerDAO.getInstance().addCustomer(g);
     }
 }

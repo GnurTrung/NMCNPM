@@ -12,6 +12,15 @@ import java.util.logging.Logger;
 import src.model.Customer;
 
 public class CustomerDAO {
+
+	private static CustomerDAO instance;
+
+	public static CustomerDAO getInstance() {
+		if (instance == null) {
+			instance = new CustomerDAO();
+		}
+		return instance;
+	}
 	public List<Customer> getAllCustomers() {
 		List<Customer> listCustomer = new ArrayList<>();
 		try {

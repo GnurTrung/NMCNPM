@@ -5,23 +5,31 @@ import src.model.Bill;
 
 import java.util.List;
 public class BillService {
-    private BillDAO billDAO = new BillDAO();
+    private static BillService instance;
+
+    public static BillService getInstance(){
+        if (instance == null){
+            instance = new BillService();
+        }
+        return instance;
+    }
+//    private BillDAO billDAO = new BillDAO();
     public  List<Bill> getAllBills(){
-        return billDAO.getAllBills();
+        return BillDAO.getInstance().getAllBills();
     }
     public Bill getBillByID(int IDOrder){
-        return  billDAO.getBillByID(IDOrder);
+        return  BillDAO.getInstance().getBillByID(IDOrder);
     }
     public void addBill(Bill b){
-        billDAO.addBill(b);
+        BillDAO.getInstance().addBill(b);
     }
     public void removeBill(int IDOrder){
-        billDAO.removeBill(IDOrder);
+        BillDAO.getInstance().removeBill(IDOrder);
     }
     public void removeAllBills(){
-        billDAO.removeAllBills();
+        BillDAO.getInstance().removeAllBills();
     }
     public List<Bill> getBillByDate(String date){
-        return billDAO.getBillByDate(date);
+        return BillDAO.getInstance().getBillByDate(date);
     }
 }

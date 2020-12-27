@@ -5,45 +5,53 @@ import java.util.List;
 import src.model.Employee;
 import src.model.Admin;
 public class EmployeeService {
-    private EmployeeDAO EmployeeDAO;
+//    private EmployeeDAO EmployeeDAO;
 
+    private static EmployeeService instance;
 
-    public EmployeeService() {
-        EmployeeDAO = new EmployeeDAO();
-
+    public static EmployeeService getInstance(){
+        if (instance == null){
+            instance = new EmployeeService();
+        }
+        return instance;
     }
 
+//    public EmployeeService() {
+//        EmployeeDAO = new EmployeeDAO();
+//
+//    }
+
     public List<Employee> getAllEmployee() {
-        return EmployeeDAO.getAllEmployees();
+        return EmployeeDAO.getInstance().getAllEmployees();
     }
 
     public void addEmployee(Employee Employee) {
-        EmployeeDAO.addEmployee(Employee);
+        EmployeeDAO.getInstance().addEmployee(Employee);
     }
 
     public void updateEmployee(Employee u) {
-        EmployeeDAO.updateEmployee(u);
+        EmployeeDAO.getInstance().updateEmployee(u);
     }
 
     public void removeEmployee(String IDEmployee) {
-        EmployeeDAO.removeEmployee(IDEmployee);
+        EmployeeDAO.getInstance().removeEmployee(IDEmployee);
     }
 
     public List<Employee> getAllEmployeeNames() {
-        return EmployeeDAO.getAllEmployeeNames();
+        return EmployeeDAO.getInstance().getAllEmployeeNames();
     }
 
     public List<Employee> getAllEmployees() {
-        return EmployeeDAO.getAllEmployees();
+        return EmployeeDAO.getInstance().getAllEmployees();
     }
 
     public Employee getEmployeeByID(String IDEmployee) {
 
-        return EmployeeDAO.getEmployeeByID(IDEmployee);
+        return EmployeeDAO.getInstance().getEmployeeByID(IDEmployee);
     }
 
 
     public  void changPassEmployee(Employee Employee, String newPass){
-        EmployeeDAO.updateEmployeePassword(Employee, newPass);
+        EmployeeDAO.getInstance().updateEmployeePassword(Employee, newPass);
     }
 }

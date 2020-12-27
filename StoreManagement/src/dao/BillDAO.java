@@ -14,6 +14,14 @@ import src.model.Product;
 
 
 public class BillDAO {
+    private static BillDAO instance;
+
+    public static BillDAO getInstance() {
+        if (instance == null) {
+            instance = new BillDAO();
+        }
+        return instance;
+    }
     public List<Bill> getAllBills() {
         List<Bill> listBill = new ArrayList<>();
         try {

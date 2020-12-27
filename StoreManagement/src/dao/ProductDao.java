@@ -11,6 +11,14 @@ import java.util.logging.Logger;
 import src.model.Product;
 
 public class ProductDao {
+    private static ProductDao instance;
+
+    public static ProductDao getInstance() {
+        if (instance == null) {
+            instance = new ProductDao();
+        }
+        return instance;
+    }
     public List<Product> getAllProduct() {
         List<Product> listProduct = new ArrayList<>();
         try {

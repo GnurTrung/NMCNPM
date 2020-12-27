@@ -14,6 +14,14 @@ import  src.model.Employee;
 import  src.model.Admin;
 
 public class EmployeeDAO {
+    private static EmployeeDAO instance;
+
+    public static EmployeeDAO getInstance() {
+        if (instance == null) {
+            instance = new EmployeeDAO();
+        }
+        return instance;
+    }
     public List<Employee> getAllEmployees() {
         List<Employee> listEmployee = new ArrayList<>();
         try {
