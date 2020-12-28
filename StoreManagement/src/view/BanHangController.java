@@ -236,5 +236,5 @@ public class BanHangController implements Initializable{
             }
         }
     }
-    
+
 }
