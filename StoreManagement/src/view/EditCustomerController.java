@@ -88,10 +88,10 @@ public class EditCustomerController implements Initializable {
     }
     private void bindingData() {
        // txtCustomerId.setText();
-        txtCustomerIsVip.setText(customer.getCustomerName());
-        txtCustomerName.setText(customer.getCustomerUnit());
-        txtCustomerPoint.setText(customer.getCustomerDetail());
-        txtCustomerPhone.setText(customer.getCustomerPrice());
+        txtCustomerIsVip.setText(customer.getName());
+        txtCustomerName.setText(customer.getName());
+        txtCustomerPoint.setText("" +customer.getPoint());
+        txtCustomerPhone.setText(customer.getPhone());
 
     }
 

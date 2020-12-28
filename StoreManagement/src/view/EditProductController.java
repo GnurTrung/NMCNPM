@@ -94,7 +94,7 @@ public class EditProductController implements Initializable {
         txtProductName.setText(product.getProductName());
         txtProductUnit.setText(product.getProductUnit());
         txtProductDetail.setText(product.getProductDetail());
-        txtProductPrice.setText(product.getProductPrice());
+        txtProductPrice.setText("" + product.getProductPrice());
 
     }
 

@@ -1,4 +1,4 @@
-package Utils;
+package src.utils;
 
 import javafx.util.Duration;
 import tray.animations.AnimationType;

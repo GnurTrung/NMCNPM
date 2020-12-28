@@ -26,7 +26,7 @@ public class ProductService {
         ProductDao.getInstance().removeProduct(IDProduct);
     }
 
-    public  void addGoods(Product product){
+    public  void addProduct(Product product){
         ProductDao.getInstance().addProduct(product);
     }
 

@@ -170,13 +170,13 @@ public class EmployeeController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Xóa nhân viên");
             alert.setHeaderText("Bạn muốn xóa nhân viên này ra khỏi danh sách?");
-            alert.setContentText("[" + temp.getId() + "] " + temp.getName());
+            alert.setContentText("[" + temp.getID() + "] " + temp.getName());
 
             // option != null.
             Optional<ButtonType> option = alert.showAndWait();
 
              if (option.get() == ButtonType.OK) {
-                int rs = EmployeeService.getInstance().deleteEmployee(temp.getId());
+                int rs = EmployeeService.getInstance().removeEmployee(temp.getID());
                 Util.showSuccess(rs, "Quản lý nhân viên", "Xóa nhân viên thành công!");
                 refreshTable();
                 clearInput();

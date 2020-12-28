@@ -2,7 +2,7 @@ package src.view;
 
 import src.model.Product;
 import src.service.ProductService;
-import utils.Util;
+import src.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
