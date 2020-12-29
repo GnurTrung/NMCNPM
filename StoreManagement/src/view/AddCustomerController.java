@@ -75,7 +75,7 @@ public class AddCustomerController implements Initializable {
             panelAddCustomer.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
         });
 
-        txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.S));
+        txtCustomerId.setText(Util.generateID(Util.PREFIX_CODE.KH));
         txtCustomerId.setDisable(true);
     }
 
@@ -121,7 +121,7 @@ public class AddCustomerController implements Initializable {
             String customerIsVip = txtCustomerIsVip.getText();
             String customerPhone = txtCustomerPhone.getText();
             String customerPoint = txtCustomerPoint.getText();
-            Customer customer = new Customer(customerId, customerName, customerIsVip, customerPhone, customerPoint);
+            Customer customer = new Customer(customerId, customerName,"","", customerPhone,  true, Integer.parseInt(customerPoint));
 
             int rs = CustomerService.getInstance().addCustomer(customer);
             customerController.refreshTable();

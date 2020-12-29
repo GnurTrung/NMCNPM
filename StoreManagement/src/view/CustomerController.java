@@ -1,6 +1,6 @@
 package src.view;
 
-import com.utils.Util;
+import src.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
