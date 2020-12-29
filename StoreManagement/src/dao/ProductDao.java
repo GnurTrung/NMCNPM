@@ -45,14 +45,14 @@ public class ProductDao {
         return null;
     }
 
-    public Product getProductByID(int ID) {
+    public Product getProductByID(int id) {
 
         try {
             Product d = new Product();
-            String sql = "SELECT * FROM Product Where IDProduct =?";
+            String sql = "SELECT * FROM Product Where id =?";
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, ID);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -76,7 +76,7 @@ public class ProductDao {
         List<Product> listProduct = new ArrayList<>();
         try {
 
-            String sql = "SELECT * FROM Product WHERE Name like N'%"+nameProduct+"%'";
+            String sql = "SELECT * FROM Product WHERE name like N'%"+nameProduct+"%'";
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -104,7 +104,7 @@ public class ProductDao {
         try {
             Connection connection = getConnection();
 
-            String sql = "INSERT INTO Product (IDProduct,Name,Price)"
+            String sql = "INSERT INTO Product (id,name,price)"
                     + " VALUES (?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, d.getProductId());
@@ -121,8 +121,8 @@ public class ProductDao {
     public void updateProduct(Product d) {
         try {
             Connection connection = getConnection();
-            String sql = "UPDATE Product SET Name =? ,Price  =?, Quantity =?, Detail =?"
-                    +" WHERE IDProduct =?";
+            String sql = "UPDATE Product SET name =? ,price  =?, quantity =?, product_detail =?"
+                    +" WHERE id =?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(4, d.getProductId());
@@ -142,7 +142,7 @@ public class ProductDao {
     public void removeProduct(String IDProduct){
         try {
             Connection connection = getConnection();
-            String sql1 = "DELETE FROM Product WHERE IDProduct = ? ";
+            String sql1 = "DELETE FROM Product WHERE id = ? ";
             PreparedStatement ps1 = connection.prepareStatement(sql1);
             ps1.setString(1, IDProduct);
             int rs1 = ps1.executeUpdate();

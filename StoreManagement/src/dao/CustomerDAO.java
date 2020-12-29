@@ -31,10 +31,10 @@ public class CustomerDAO {
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Customer g = new Customer();
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
-				g.setPoint(resultSet.getInt("accumulatedPoints"));
+				g.setPoint(resultSet.getInt("Points"));
 				g.setVIP(resultSet.getBoolean("VIP"));
 				g.setAddress(resultSet.getString("address"));
 				listCustomer.add(g);
@@ -57,7 +57,7 @@ public class CustomerDAO {
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Customer g = new Customer();
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));
@@ -95,7 +95,7 @@ public class CustomerDAO {
 	public void updateCustomer(Customer g) {
 		try {
 			Connection connection = getConnection();
-			String sql = "UPDATE Customer SET name =? ,phone =?,point=?, address = ? VIP = ? "
+			String sql = "UPDATE Customer SET name =? ,phone =?, Points=?, address = ? VIP = ? "
 					+" WHERE IDCustomer =?";
 
 			PreparedStatement ps = connection.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class CustomerDAO {
 			Customer g = new Customer();
 			while (resultSet.next()) {
 
-				g.setID(resultSet.getString("id"));
+				g.setID(resultSet.getString("IDCustomer"));
 				g.setName(resultSet.getString("name"));
 				g.setPhone(resultSet.getString("phone_number"));
 				g.setPoint(resultSet.getInt("Points"));
@@ -145,7 +145,7 @@ public class CustomerDAO {
 		Customer g = new Customer();
 		try {
 
-			String sql = "SELECT * FROM Customer WHERE phone =? ";
+			String sql = "SELECT * FROM Customer WHERE phone_number =? ";
 			Connection connection = getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, phone);
@@ -171,7 +171,7 @@ public class CustomerDAO {
 		try {
 			Connection connection = getConnection();
 
-			String sql = "INSERT INTO Customer (id,name,phone_number,point, address, VIP, DoB)"
+			String sql = "INSERT INTO Customer (IDCustomer, name, phone_number, Points, address, VIP, DoB)"
 					+ " VALUES (?,?,?,?,?,?)";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, g.getID());

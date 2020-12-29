@@ -74,7 +74,7 @@ public class BillDAO {
         try {
             Connection connection = getConnection();
 
-            String sql = "INSERT INTO Bill (IDOrder, DoanhThu, Ngay)"
+            String sql = "INSERT INTO Bill (IDOrder, Total_price, Ngay)"
                     + " VALUES (?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, b.getIDOrder());

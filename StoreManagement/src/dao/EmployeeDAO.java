@@ -95,38 +95,24 @@ public class EmployeeDAO {
 
             int rs = ps.executeUpdate();
 
-            // salary
-//            if (Employee.getRole().equals("Employee")) {
-//                String sql0 = "INSERT INTO SalaryEmployee (IDEmployee,Month) VALUES (?,?)";
-//                for (int i = 1; i < 13; i++) {
-//                    PreparedStatement ps0 = connection.prepareStatement(sql0);
-//                    ps0.setInt(1, Employee.getIDEmployee());
-//                    ps0.setInt(2, i);
-//                    int rs0 = ps0.executeUpdate();
-//                }
-//            }
 
-//                      String sql0 = "INSERT INTO SalaryEmployee (IDEmployee) VALUES (?)";
-//            PreparedStatement ps0 = connection.prepareStatement(sql0);
-//            ps0.setInt(1, Employee.getIDEmployee());
-//            int rs0 = ps0.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void removeEmployee(String IDEmployee) {
+    public void removeEmployee(String ID) {
         try {
             Connection connection = getConnection();
             String sql1 = "DELETE FROM Employee WHERE ID = ? ";
             PreparedStatement ps1 = connection.prepareStatement(sql1);
-            ps1.setString(1, IDEmployee);
+            ps1.setString(1, ID);
             int rs1 = ps1.executeUpdate();
 
-            String sql = "DELETE FROM Employeeoop WHERE IDEmployee = ? ";
+            String sql = "DELETE FROM Employeeoop WHERE ID = ? ";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, IDEmployee);
+            ps.setString(1, ID);
             int rs = ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -195,7 +181,7 @@ public class EmployeeDAO {
     public void updateEmployee(Employee Employee) {
             try {
                 Connection connection = getConnection();
-                String sql = "UPDATE Employee SET Address = ?, Phone =?, Role = ?, Shift = ?, Salary = ?, "
+                String sql = "UPDATE Employee SET Address = ?, phone =?, Role = ?, Shift = ?, Salary = ?, "
                         + "EmployeeName=?,Password=? , name =? WHERE ID =?";
 
                 PreparedStatement ps = connection.prepareStatement(sql);
@@ -209,10 +195,10 @@ public class EmployeeDAO {
                 ps.setString(8, Employee.getPassWord());
                 ps.setString(9, Employee.getName());
                 int rs = ps.executeUpdate();
-//            String sql0 = "DELETE FROM SalaryEmployee WHERE IDEmployee = ? ";
+//            String sql0 = "DELETE FROM SalaryEmployee WHERE ID= ? ";
 //
 //            PreparedStatement ps0 = connection.prepareStatement(sql0);
-//            ps0.setInt(1, Employee.getIDEmployee());
+//            ps0.setInt(1, Employee.getID());
 //            int rs0 = ps0.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -221,14 +207,14 @@ public class EmployeeDAO {
         }
 
 
-    public Employee getEmployeeByID(String IDEmployee) {
+    public Employee getEmployeeByID(String ID) {
 
         try {
 
             String sql = "SELECT * FROM Employee WHERE ID =?";
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, IDEmployee);
+            ps.setString(1, ID);
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Employee u = new Employee();
@@ -286,8 +272,8 @@ public class EmployeeDAO {
         List<Employee> listE = new ArrayList<>();
         try {
 
-            String sql = "select IDEmployee , FullName, Gender,DOB,Address,"
-                    + " Phone from Employeeoop where Role like 'Admin'";
+            String sql = "select ID , name, Gender,DOB,address,"
+                    + " phone_number from EMPLOYEE where Role like 'Admin'";
 
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -317,7 +303,7 @@ public class EmployeeDAO {
     public void updateEmployeePassword(Employee Employee, String newPass) {
         try {
             Connection connection = getConnection();
-            String sql = "UPDATE Employeeoop SET Password=? WHERE IDEmployee =?";
+            String sql = "UPDATE EMPLOYEE SET Password=? WHERE ID =?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(2, Employee.getID());
